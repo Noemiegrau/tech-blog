@@ -9,7 +9,9 @@
         {{format_date created_at}} | {{comments.length}} {{format_plural "comment" comments.length}}
       </div>
 
+    {{#if loggedIn}}
       <a href="/single-post/{{id}}">See post</a>
     </article>
+    {{/if}}
 
-    
+

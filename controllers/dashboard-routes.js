@@ -45,7 +45,7 @@ router.get('/', (req, res) => {
 
       res.render('dashboard', { 
         posts,
-        loggedIn: true
+        loggedIn: req.session.loggedIn
       });
 
     })

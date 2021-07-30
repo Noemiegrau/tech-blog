@@ -8,7 +8,7 @@ async function commentFormHandler(event) {
     ];
   
     if (comment_text) {
-        const response = await fetch('/api/comment', {
+        const response = await fetch('/api/comments', {
           method: 'POST',
           body: JSON.stringify({
             post_id,
@@ -21,6 +21,7 @@ async function commentFormHandler(event) {
       
         if (response.ok) {
           document.location.reload();
+          console.log('bravo');
         } else {
           alert(response.statusText);
         }
