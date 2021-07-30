@@ -1,10 +1,68 @@
 const router = require('express').Router();
-const { Post, Staff, Comment, Customer, Liked } = require('../models');
+const sequelize = require('../config/connection');
+const { Post, User, Comment } = require('../models');
 
 // get dashboard info
+// router.get('/', (req, res) => {
+//     res.render('dashboard')
+// });
+
+// get all posts
 router.get('/', (req, res) => {
-    res.render('dashboard')
-});
+  Post.findAll({
+    where: {
+      // use the ID from the session
+      user_id: req.session.user_id
+    },
+    attributes: [
+      'id',
+      'title',
+      'post_text',
+      'user_id',
+      'created_at'
+    ],
+    order: [
+      ['created_at', 'DESC']
+    ],
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      },
+      {
+        model: Comment,
+        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        include: {
+            model: User,
+            attributes: ['username']
+        }
+    }
+
+    ]
+  })
+    .then(dbPostData => {
+      const posts = dbPostData.map(post => post.get({ plain: true }));
+
+      res.render('dashboard', { 
+        posts,
+        loggedIn: true
+      });
+
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+  });
+
+  
+
+
+
+
+
+
+
 
 // Maybe future enhancement?
 // router.get('/:email', (req, res) => {

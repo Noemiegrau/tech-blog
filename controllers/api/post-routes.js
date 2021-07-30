@@ -80,7 +80,7 @@ router.get('/', (req, res) => {
 
   router.post('/', (req, res) => {
     Post.create({
-      post_title: req.body.post_title,
+      title: req.body.title,
       post_text: req.body.post_text,
       user_id: req.session.user_id
     })

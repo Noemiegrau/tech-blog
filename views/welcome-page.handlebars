@@ -3,45 +3,49 @@
           <ul>
             <!--List item element-->
                 <!--Anchor element-->
+             <li>
+              <a href="/welcome-page">Home</a>
+            </li>
             <li>
-
+                {{!-- <a id="dashboard-button" href="">Dashboard</a> --}}
+                <a href="/dashboard">Dashboard</a>
+            </li>
+            <li>
+                <a href="/login">Login</a>
             </li>
           </ul>  
         </nav>
 
-
-
 <div id="container-welcome-page" class="container">
-  <div class="row">
-    
-    <div class="col-leftt align-self-end">
-              <img id="img-welcome" src="pexels-photo-6646778.jpeg" alt="bags of food" ></img>
-    </div>
 
-  {{!-- <div class="row"> --}}
-    <div class="col-rightt">
+<div id="main-container" class="">
 
-        <div class="row">
-              <p id="slogan">Save the <span class="span-slogan">food</span>, Spread the <span class="span-slogan">love</span></p>
-        </div>  
+  <ul id="post-list-id" class="post-list">
+  {{#each posts as |post|}}
+    <li>
 
-        <div class="row">
-              {{!-- <div id="div-arrow-wel">
-                <span class="arrow" >&#8594;</span>
-              </div> --}}
-
-              <div id="div-btn-wel">
-                <a id="login-btn-welcome" href="/login"> Login</a>
-              </div>
+  {{!-- <article class="post">
+        <div class="text">
+          <div class="header-post-title">
+            <p>{{post.title}}</p>
+            Posted by <span id="post-name">{{user.username}} </span> on {{format_date created_at}}
+          </div>
+          <p>{{post.post_text}}</p>
         </div>
+        <a href="/single-post/{{post.id}}">See full post</a>
 
-    </div>
-  {{!-- </div> --}}
+  </article> --}}
 
-  </div>
+    {{> post-info post }}
+
+    </li>
+    <br>
+  {{/each}}
+  </ul>
 
 </div>
 
+</div>
 
-
-
+<script src="/javascript/add-post.js"></script>
+<script src="/javascript/logout-chat.js"></script>

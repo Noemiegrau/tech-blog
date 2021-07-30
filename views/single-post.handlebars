@@ -1,4 +1,4 @@
-        <nav>
+<nav>
           <!--Unordered list element-->
           <ul>
             <!--List item element-->
@@ -11,19 +11,7 @@
                 <a href="/dashboard">Dashboard</a>
             </li>
             <li>
-                <a href="/allCustomer">Customers</a>
-            </li>
-            <li>
-                <a href="/packages">Packages</a>
-            </li>
-            <li>
-                <a href="/chat">Chat</a>
-            </li>
-            <li>
-                <a href="/contact-us">Contact Us</a>
-            </li>
-            <li>
-                <button id="logout-single-post" href="">Logout</button>
+                <button id="logout" href="">Logout</button>
             </li>
           </ul>  
         </nav>
@@ -34,10 +22,11 @@
 <ol class="post-list">
     <article class="post">
       <div class="text">
+        <p>{{posts.title}}</p>
         <p>{{posts.post_text}}</p>
       </div>
       <div id="post-name-single" class="meta">
-        By <span id="post-name">{{posts.staff.first_name}} {{posts.staff.last_name}} </span> on
+        By <span id="post-name">{{posts.user.username}} </span> on
         {{format_date posts.created_at}} | {{posts.comments.length}} {{format_plural "comment" posts.comments.length}} 
         | {{posts.liked_count}} {{format_plural "like" posts.liked_count}}
       </div>

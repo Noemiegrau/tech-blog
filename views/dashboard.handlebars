@@ -3,20 +3,12 @@
           <ul>
             <!--List item element-->
                 <!--Anchor element-->
-            <li>
+             <li>
               <a href="/welcome-page">Home</a>
             </li>
             <li>
-                <a href="/allCustomer">Customers</a>
-            </li>
-            <li>
-                <a href="/packages">Packages</a>
-            </li>
-            <li>
-                <a href="/chat">Chat</a>
-            </li>
-            <li>
-                <a href="/contact-us">Contact Us</a>
+                {{!-- <a id="dashboard-button" href="">Dashboard</a> --}}
+                <a href="/dashboard">Dashboard</a>
             </li>
             <li>
                 <button id="logout" href="">Logout</button>
@@ -28,21 +20,51 @@
         <div id="row-dashboard" class="row">    
             <div id="admin-main-control" class="col-md-10 p-x-3 p-y-1">
                 <div class="main-content">
-                    <h3 id="dashboard-title">Welcome back to your dashboard, have a great day!</h3>
+
+<div id="create-post">
+
+  <section>
+    {{!-- Create post --}}
+    <h2 id="title-create-post">Create New Post</h2>
+
+    <form class="new-post-form">
+      <div>
+
+        <label for="title">Write your new post here: </label>
+
+        <label for="title">Title: </label>
+        <input type="text" id="title" name="title" placeholder="title" />
+
+        <label for="post-title">Post text: </label>
+        <input type="text" id="post-text" name="post_text" placeholder="post text" />
+
+        <button id="post-post-btn" type="submit" class="btn btn-info btn-lg">Post</button>
+  <br>
+  <br>
+      </div>
+    </form>
+  </section>
+</div>
+
+
+{{#if posts.length}}
+<section>
+  <h2>Your Posts</h2>
+  <ol>
+    {{#each posts as |post|}}
+    <li>
+      {{> post-info post}}
+      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+    </li>
+    {{/each}}
+  </ol>
+</section>
+{{/if}}
+
                 </div>
             </div>
         </div>
 </div>
 
+<script src="/javascript/add-post.js"></script>
 <script src="/javascript/logout.js"></script>
-
-
-
-{{!-- FUTURE ENHANCEMENT --}}
-    {{!-- <h3>Welcome back to your dashboard, {{staff.first_name}}!</h3>
-        <p>First &#38; Last Name: {{staff.first_name}} {{staff.last_name}}</p>
-        <p>Employee Number: {{staff.staff_number}}</p>
-        <p>Email: <span id="email-dashboard"></span></p>
-    </div> --}}
-
-{{!-- <script type="text/javascript" src="/javascript/email-get-localStorage.js" ></script> --}}

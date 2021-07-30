@@ -1,11 +1,12 @@
     <article class="post">
       <div class="text">
+        <p>{{posts.title}}</p>
+        <p>{{title}}</p>
         <p>{{post_text}}</p>
       </div>
       <div class="meta">
-        By {{staff.first_name}} {{staff.last_name}} on
-        {{format_date created_at}} | {{comments.length}} {{format_plural "comment" comments.length}} 
-        | {{liked_count}} {{format_plural "like" liked_count}}
+        Posted by {{user.username}} on
+        {{format_date created_at}} | {{comments.length}} {{format_plural "comment" comments.length}}
       </div>
 
       <a href="/single-post/{{id}}">See post</a>
