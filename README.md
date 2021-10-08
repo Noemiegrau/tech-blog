@@ -1,4 +1,4 @@
-# **_Tech Blog_**
+# **_Tech Blog_** (WORK IN PROGRESS)
 
 ## **_Table of contents_**
 * [Description of the project](#description-of-the-project)
